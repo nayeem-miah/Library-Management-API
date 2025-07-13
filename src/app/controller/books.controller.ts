@@ -28,7 +28,7 @@ bookRouter.get("/books", async (req: Request, res: Response) => {
         const filter = req.query.filter ? req.query.filter : "";
         let result;
         if (filter) {
-            result = await Book.find({ genre: filter });
+            result = await Book.find({ genre: filter })
             res.status(200).json({
                 success: true,
                 message: "Books retrieved successfully",
@@ -52,6 +52,27 @@ bookRouter.get("/books", async (req: Request, res: Response) => {
             error: error
         })
     }
-})
+});
+
+// get a book by id
+bookRouter.get("/books/:bookId", async (req: Request, res: Response) => {
+    try {
+        const bookId = req.params.bookId
+        const result = await Book.findById(bookId);
+        res.status(200).json({
+            success: true,
+            message: "Book retrieved successfully",
+            data: result
+        })
+
+    } catch (error) {
+        console.error("something is wrong", error);
+        res.status(500).json({
+            success: false,
+            message: "something is wrong",
+            error: error
+        })
+    }
+});
 
 export default bookRouter;
