@@ -72,4 +72,21 @@ borrowRouter.get("/borrow", async (req: Request, res: Response) => {
     }
 })
 
+borrowRouter.get("/get-all-data", async (req: Request, res: Response) => {
+    try {
+        const result = await Borrow.find().populate("book")
+        res.status(200).json({
+            success: true,
+            message: "Borrow retrieved successfully",
+            data: result,
+        })
+    } catch (error: any) {
+        console.error(error);
+        res.status(500).json({
+            success: false,
+            message: "something is wrong ",
+            error: error.message || "Internal Server Error"
+        })
 
+    }
+})

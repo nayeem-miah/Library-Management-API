@@ -2,6 +2,7 @@ import express, { Application, Request, Response } from 'express';
 import dotenv from "dotenv";
 import bookRouter from './app/controller/books.controller';
 import { borrowRouter } from './app/controller/borrow.controller';
+import Borrow from './app/modular/borrow.modeler';
 export const app: Application = express();
 
 // Middleware to parse JSON bodies
@@ -15,3 +16,4 @@ app.use("/api", borrowRouter);
 app.get("/", async (req: Request, res: Response) => {
     res.send("Hello server");
 });
+
