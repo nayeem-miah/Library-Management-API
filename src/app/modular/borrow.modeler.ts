@@ -25,5 +25,5 @@ const BorrowSchema = new Schema<Borrow>({
     timestamps: true
 })
 
-const BorrowModel = model<Borrow>("Borrow", BorrowSchema)
-export default BorrowModel
+const Borrow = model<Borrow>("Borrow", BorrowSchema)
+export default Borrow
