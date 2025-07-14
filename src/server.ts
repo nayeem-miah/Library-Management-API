@@ -11,7 +11,7 @@ const main = async () => {
         await mongoose.connect(uri)
         console.log("Db connecting............");
         server = app.listen(port, () => {
-            console.log(`sever is running port http://localhost:${port}`);
+            console.log(`sever is running port hhttp://localhost:${port}`);
         })
     } catch (error) {
         console.error(error)
