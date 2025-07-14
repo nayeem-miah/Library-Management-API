@@ -1,6 +1,6 @@
 import { model, Schema } from "mongoose"
-import { Borrow, BorrowStatics } from "../interfaces/borrow.interface"
 import { Book } from "./books.model";
+import { Borrow, BorrowStatics } from "../interfaces/borrow.interface";
 
 const BorrowSchema = new Schema<Borrow, BorrowStatics>({
     book: {
@@ -26,6 +26,7 @@ const BorrowSchema = new Schema<Borrow, BorrowStatics>({
     timestamps: true
 });
 
+// Static method to update book copies after borrowing
 BorrowSchema.static("updatedCopiesAfterBorrow", async function (bookId: string, quantity: number) {
     const book = await Book.findById(bookId);
     if (!book) {

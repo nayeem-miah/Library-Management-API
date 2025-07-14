@@ -9,19 +9,19 @@ borrowRouter.post("/borrow", async (req: Request, res: Response) => {
         const borrowData = req.body;
         const bookId = req.body.book;
         // static method
-        const updatedData = await Borrow.updatedCopiesAfterBorrow(bookId, borrowData?.quantity);
-        const result = await Borrow.create(borrowData);
+        const updatedDoc = await Borrow.updatedCopiesAfterBorrow(bookId, borrowData?.quantity)
         res.status(201).json({
             success: true,
             message: "borrow inserted success",
-            data: result
+            data: borrowData,
+            updateData: updatedDoc
         })
-    } catch (error) {
+    } catch (error: any) {
         console.error(error);
         res.status(500).json({
             success: false,
             message: "something is wrong ",
-            error: error
+            error: error.message || "Internal Server Error"
         })
     }
 

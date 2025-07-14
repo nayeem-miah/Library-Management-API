@@ -7,4 +7,4 @@ export interface Borrow {
 };
 export interface BorrowStatics extends Model<Borrow> {
     updatedCopiesAfterBorrow(bookId: string, quantity: number): any
-} 
+}
