@@ -91,7 +91,10 @@ bookRouter.patch("/books/:bookId", (req, res) => __awaiter(void 0, void 0, void 
     try {
         const bookId = req.params.bookId;
         const updatedData = req.body;
-        const result = yield books_model_1.Book.findByIdAndUpdate(bookId, updatedData, { new: true });
+        const result = yield books_model_1.Book.findByIdAndUpdate(bookId, updatedData, {
+            new: true,
+            runValidators: true
+        });
         res.status(200).json({
             success: true,
             message: "Book updated successfully",
