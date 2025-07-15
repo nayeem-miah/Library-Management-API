@@ -16,7 +16,7 @@ app.use("/api", borrowRouter);
 
 
 app.get("/", async (req: Request, res: Response) => {
-    res.send("Hello server");
+    res.send("Welcome to the Library Management System API");
 });
 
 app.use(notFound);
