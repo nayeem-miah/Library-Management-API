@@ -27,7 +27,14 @@ dotenv_1.default.config();
 exports.app.use("/api", books_controller_1.default);
 exports.app.use("/api", borrow_controller_1.borrowRouter);
 exports.app.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    res.send("Hello server");
+    res.status(200).json({
+        message: "Welcome to the Library Management System API",
+        status: "success",
+        data: {
+            name: "Library Management System API",
+            version: "1.0.0"
+        }
+    });
 }));
 exports.app.use(notFound_1.default);
 exports.app.use(globalErrorHandler_1.default);
