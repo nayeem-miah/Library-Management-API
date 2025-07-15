@@ -8,11 +8,13 @@ borrowRouter.post("/borrow", async (req: Request, res: Response) => {
         const borrowData = req.body;
         const bookId = req.body.book;
         // static method
-        const updatedDoc = await Borrow.updatedCopiesAfterBorrow(bookId, borrowData?.quantity)
+        const updatedDoc = await Borrow.updatedCopiesAfterBorrow(bookId, borrowData?.quantity);
+        // create borrow data
+        const result = await Borrow.create(borrowData);
         res.status(201).json({
             success: true,
             message: "borrow inserted success",
-            data: borrowData,
+            data: result,
             updateData: updatedDoc
         })
     } catch (error: any) {
@@ -72,7 +74,7 @@ borrowRouter.get("/borrow", async (req: Request, res: Response) => {
     }
 })
 
-borrowRouter.get("/get-all-data", async (req: Request, res: Response) => {
+borrowRouter.get("/get-all-borrow", async (req: Request, res: Response) => {
     try {
         const result = await Borrow.find().populate("book")
         res.status(200).json({
