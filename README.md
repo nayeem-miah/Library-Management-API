@@ -15,7 +15,7 @@ A full-featured RESTful Library Management System built with **Express.js**, **T
 - Schema-level validation using Mongoose
 - Filtering and sorting with query parameters
 - Global error handling (validation, 404s, server errors)
-- Mongoose static
+- Mongoose static methods
 
 ---
 
@@ -72,10 +72,9 @@ npm run dev
 
 # 6. For production build
 npm run build
-npm start
 ```
 
 
 
-## 🌱 "From sleepless nights to deployed sites — every project brings me closer to my dream as a full-stack developer."
+# 🌱 "From sleepless nights to deployed sites — every project brings me closer to my dream as a full-stack developer."
 
