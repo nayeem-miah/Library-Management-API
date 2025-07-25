@@ -22,7 +22,7 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
         yield mongoose_1.default.connect(uri);
         console.log("Db connecting............");
         server = app_1.app.listen(port, () => {
-            console.log(`sever is running port hhttp://localhost:${port}`);
+            console.log(`sever is running port http://localhost:${port}`);
         });
     }
     catch (error) {

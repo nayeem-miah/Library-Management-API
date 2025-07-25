@@ -4,11 +4,14 @@ import bookRouter from './app/controller/books.controller';
 import { borrowRouter } from './app/controller/borrow.controller';
 import notFound from './app/middlewares/notFound';
 import globalErrorHandler from './app/middlewares/globalErrorHandler';
+import cors from 'cors';
 export const app: Application = express();
-
 // Middleware to parse JSON bodies
 app.use(express.json());
-dotenv.config()
+dotenv.config();
+app.use(cors({
+    origin: "http://localhost:5173"
+}))
 
 // application router
 app.use("/api", bookRouter)

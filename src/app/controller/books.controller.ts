@@ -53,6 +53,23 @@ bookRouter.get("/books", async (req: Request, res: Response) => {
         })
     }
 });
+bookRouter.get("/recent-books", async (req: Request, res: Response) => {
+    try {
+        const result = await Book.find().sort({ createdAt: -1 }).limit(9);
+        res.status(200).json({
+            success: true,
+            message: "Books retrieved successfully",
+            data: result,
+        })
+    } catch (error) {
+        console.error("something is wrong", error);
+        res.status(500).json({
+            success: false,
+            message: "something is wrong",
+            error: error
+        })
+    }
+});
 
 // get a book by id
 bookRouter.get("/books/:bookId", async (req: Request, res: Response) => {

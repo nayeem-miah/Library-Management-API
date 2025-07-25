@@ -51,7 +51,7 @@ borrowRouter.get("/borrow", async (req: Request, res: Response) => {
             }, {
                 $project: {
                     _id: 0,
-                    bookId: "$_id",
+                    book: "$_id",
                     title: "$bookData.title",
                     isbn: "$bookData.isbn",
                     totalQuantity: 1

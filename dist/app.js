@@ -19,10 +19,14 @@ const books_controller_1 = __importDefault(require("./app/controller/books.contr
 const borrow_controller_1 = require("./app/controller/borrow.controller");
 const notFound_1 = __importDefault(require("./app/middlewares/notFound"));
 const globalErrorHandler_1 = __importDefault(require("./app/middlewares/globalErrorHandler"));
+const cors_1 = __importDefault(require("cors"));
 exports.app = (0, express_1.default)();
 // Middleware to parse JSON bodies
 exports.app.use(express_1.default.json());
 dotenv_1.default.config();
+exports.app.use((0, cors_1.default)({
+    origin: "http://localhost:5173"
+}));
 // application router
 exports.app.use("/api", books_controller_1.default);
 exports.app.use("/api", borrow_controller_1.borrowRouter);
