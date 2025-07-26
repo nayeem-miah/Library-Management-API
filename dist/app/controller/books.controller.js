@@ -66,6 +66,24 @@ bookRouter.get("/books", (req, res) => __awaiter(void 0, void 0, void 0, functio
         });
     }
 }));
+bookRouter.get("/recent-books", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield books_model_1.Book.find().sort({ createdAt: -1 }).limit(9);
+        res.status(200).json({
+            success: true,
+            message: "Books retrieved successfully",
+            data: result,
+        });
+    }
+    catch (error) {
+        console.error("something is wrong", error);
+        res.status(500).json({
+            success: false,
+            message: "something is wrong",
+            error: error
+        });
+    }
+}));
 // get a book by id
 bookRouter.get("/books/:bookId", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {

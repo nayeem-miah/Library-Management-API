@@ -20,6 +20,7 @@ const borrow_controller_1 = require("./app/controller/borrow.controller");
 const notFound_1 = __importDefault(require("./app/middlewares/notFound"));
 const globalErrorHandler_1 = __importDefault(require("./app/middlewares/globalErrorHandler"));
 const cors_1 = __importDefault(require("cors"));
+const userReview_controller_1 = __importDefault(require("./app/controller/userReview.controller"));
 exports.app = (0, express_1.default)();
 // Middleware to parse JSON bodies
 exports.app.use(express_1.default.json());
@@ -30,6 +31,7 @@ exports.app.use((0, cors_1.default)({
 // application router
 exports.app.use("/api", books_controller_1.default);
 exports.app.use("/api", borrow_controller_1.borrowRouter);
+exports.app.use("/api", userReview_controller_1.default);
 exports.app.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.status(200).json({
         message: "Welcome to the Library Management System API",

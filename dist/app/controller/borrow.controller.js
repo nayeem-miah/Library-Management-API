@@ -63,7 +63,7 @@ exports.borrowRouter.get("/borrow", (req, res) => __awaiter(void 0, void 0, void
             }, {
                 $project: {
                     _id: 0,
-                    bookId: "$_id",
+                    book: "$_id",
                     title: "$bookData.title",
                     isbn: "$bookData.isbn",
                     totalQuantity: 1
