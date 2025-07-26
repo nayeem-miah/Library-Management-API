@@ -5,6 +5,7 @@ import { borrowRouter } from './app/controller/borrow.controller';
 import notFound from './app/middlewares/notFound';
 import globalErrorHandler from './app/middlewares/globalErrorHandler';
 import cors from 'cors';
+import UserReviewRouter from './app/controller/userReview.controller';
 export const app: Application = express();
 // Middleware to parse JSON bodies
 app.use(express.json());
@@ -16,6 +17,7 @@ app.use(cors({
 // application router
 app.use("/api", bookRouter)
 app.use("/api", borrowRouter);
+app.use("/api", UserReviewRouter);
 
 
 app.get("/", async (req: Request, res: Response) => {
